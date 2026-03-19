@@ -24,9 +24,6 @@ elif points >= 60:
 elif points >= 30:
     grade = 2
     comment = "Очень плохо, месяц без КОМПЬЮТЕРА!!!!!"
-elif points > 100:
-    grade = 1
-    comment = "Ты лгун! Введи баллы корректно!"
 else:
     grade = "ошибка"
     comment = "Напиши баллы корректно!"
