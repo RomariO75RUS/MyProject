@@ -31,4 +31,4 @@ else:
     print(f"Тебе еще {years_left} год(а) до совершенолетия.")
 
 print(f"Твой любимый цвет {color}!")
-print(f"Твой рост {height_m:2f} метра!")
+print(f"Твой рост {height_m:.2f} метра!")
