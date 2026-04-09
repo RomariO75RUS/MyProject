@@ -61,15 +61,15 @@ while True:
         attempts += 1
 
         if guess < 1 or guess > max_number:
-            print("Число должно быть от 1 до 100!")
+            print(f"Число должно быть от 1 до {max_number}!")
             print('-' * 50)
         elif guess < secret_number:
-            if abs(guess - secret_number) < abs(5):
+            if abs(guess - secret_number) < 5:
                 print(f'Горячо! Разница всего {abs(guess-secret_number)}')
             print(f"Загаданное число больше. Попыток осталось: {max_attempts - attempts}")
             print('-' * 50)
         elif guess > secret_number:
-            if abs(guess - secret_number) < abs(5):
+            if abs(guess - secret_number) < 5:
                 print(f"Горячо! Разница всего {abs(guess - secret_number)}")
             print(f"Загаданное число меньше. Осталось попыток: {max_attempts - attempts}")
             print('-' * 50)
