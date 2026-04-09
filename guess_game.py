@@ -51,6 +51,7 @@ while True:
     while attempts < max_attempts:
 
         guess = input("Твое предположение: ")
+        print('-' * 50)
 
         if not guess.isdigit():
             print("Это не число! Попробуй еще раз!")
@@ -59,17 +60,23 @@ while True:
         guess = int(guess)
         attempts += 1
 
-        if guess < 1 or guess > 100:
+        if guess < 1 or guess > max_number:
             print("Число должно быть от 1 до 100!")
+            print('-' * 50)
         elif guess < secret_number:
+            if abs(guess - secret_number) < abs(5):
+                print(f'Горячо! Разница всего {abs(guess-secret_number)}')
             print(f"Загаданное число больше. Попыток осталось: {max_attempts - attempts}")
+            print('-' * 50)
         elif guess > secret_number:
-            if abs(guess - secret_number) < 5:
+            if abs(guess - secret_number) < abs(5):
                 print(f"Горячо! Разница всего {abs(guess - secret_number)}")
             print(f"Загаданное число меньше. Осталось попыток: {max_attempts - attempts}")
+            print('-' * 50)
         else:
             print(f"Поздравляю ты угадал число {secret_number} за {attempts} попыток!")
             wins += 1
+            
             break
     else:
         losses += 1
