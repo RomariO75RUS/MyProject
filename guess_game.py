@@ -2,20 +2,26 @@ import random
 import sys
 wins = 0
 losses = 0
-      
+highscores = [] # Таблица рекордов
+print("Добро подаловать в игру Угадай число")      
+
 #Создание уровней
 while True:
 
-    print("Добро подаловать в игру Угадай число")
+    # Меню выбора сложности
     print("=" *50)
     print('ВЫБЕРИТЕ СЛОЖНОСТЬ:')
-    print('--Легкий(числа от 1 до 50, 15 попыток)')
-    print('--Средний(числа от 1 до 100, 10 попыток)')
-    print('--Сложный(числа от 1 до 200, 7 попыток)')
+    print('--Легкий(числа от 1 до 50, 15 попыток(нажми 1))')
+    print('--Средний(числа от 1 до 100, 10 попыток(нажми 2))')
+    print('--Сложный(числа от 1 до 200, 7 попыток(нажми 3))')
     print('--Нажми "0" для выхода из игры')
+    print('--Посмотреть таблицу рекордов(нажми 4)')
+    print('=' * 50)
 
     complexity = input('Твой ввыбор(от 1 до 3): ')
 
+    
+    
     if complexity == '0':
         print(f"🏆 Игра завершена! Ты выиграл {wins} раз(а)!")
         sys.exit()  # ← немедленно закрывает программу
@@ -32,12 +38,24 @@ while True:
         max_number = 200
         max_attempts = 7
         level_name = 'Сложный'
+    elif complexity == '4':
+        if highscores:
+            print(f'\n Таблица рекордов (лучшие результаты):')
+            for i, (attempts, level) in enumerate(highscores):
+                print(f'   {i+1}. {attempts} попыток ({level})')
+                
+
+        else:
+                print('\n Пока нет рекордов. Стань первым! \n')
+                print ('=' * 40)
+        continue        
+    
     else:
         print('Не верный выбор, играем на среднем!')
         max_number = 100
         max_attempts = 10
         level_name = 'Средний'
-        
+      
         
 
     #Запуск игры
@@ -76,6 +94,11 @@ while True:
         else:
             print(f"Поздравляю ты угадал число {secret_number} за {attempts} попыток!")
             wins += 1
+            highscores.append((attempts, level_name))
+            
+            highscores.sort()
+            if len(highscores) > 5:
+                highscores.pop()
             
             break
     else:
@@ -83,11 +106,19 @@ while True:
         print(f"Ты проиграл. Загадочное число было {secret_number}.")
 
     print("=" *50)
-    print("Спасибо за игру!")
+    #print("Спасибо за игру!")
 
 
     again = input("Хочешь сыграть еще? ")
     if again != "да":
-        print (f"Поздравляю! Ты выиграл {wins} раз! И проиграл {losses} раз!")
+        # Показать текущие рекорды
+        if highscores:
+            print(f'\n Таблица рекордов (лучшие результаты):')
+            for i, (attempts, level) in enumerate(highscores):
+                print(f'   {i+1}. {attempts} попыток ({level})')
+        else:
+                print('\n Пока нет рекордов. Стань первым! \n')
+                print ('=' * 40)
+                print (f"Поздравляю! Ты выиграл {wins} раз! И проиграл {losses} раз!")
         sys.exit()
         
