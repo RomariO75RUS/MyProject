@@ -43,7 +43,7 @@ def show_menu():
         print('Не верный выбор, играем на среднем!')
         return 100, 10, 'Средний'
     
-#Создание уровней
+#Начало игры
 while True:
     max_number, max_attempts, level_name = show_menu()
     if max_number is None:
@@ -94,9 +94,8 @@ while True:
         print(f"Ты проиграл. Загадочное число было {secret_number}.")
 
     print("=" *50)
-    #print("Спасибо за игру!")
 
-
+    #Повторный запуск
     again = input("Хочешь сыграть еще? ")
     if again != "да":
         # Показать текущие рекорды
